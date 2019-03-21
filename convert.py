@@ -60,7 +60,7 @@ def convert(filename, padding=2, size=5, rev=False):
 if __name__ == '__main__':
 
     args = sys.argv
-    filename = args[0]
+    filename = args[1]
     outfilename = None
     for i, opt in enumerate(args):
         if opt == '-o':
