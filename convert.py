@@ -67,7 +67,7 @@ if __name__ == '__main__':
             outfilename = args[i+1]
             break
 
-    im = convert('01qr', padding=10)
+    im = convert(filename, padding=10)
     if outfilename:
         im.save('{}.png'.format(outfilename))
     else:
