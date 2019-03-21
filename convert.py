@@ -6,13 +6,13 @@ import re
 from os import path
 
 def get_option(args):
-    res = []
-    for arg in args:
-        if(re.match(r'\-\w', arg)):
-            res.append(arg)
-    return set(res)
+    res = {}
+    for idx, arg in enumerate(args):
+        if(re.match(r'\-\w', arg)) and arg not in res.keys():
+            res[arg] = idx
+    return res
 
-def convert(filename, padding=2, size=5, rev=False):
+def convert(filename, padding, size, rev):
 
     if not path.isfile(filename):
         print('No such file or directory: \'{}\''.format(filename))
@@ -60,14 +60,23 @@ def convert(filename, padding=2, size=5, rev=False):
 if __name__ == '__main__':
 
     args = sys.argv
-    filename = args[1]
+    argpos = get_option(args)
+    inputfilename = args[-1]
     outfilename = None
-    for i, opt in enumerate(args):
-        if opt == '-o':
-            outfilename = args[i+1]
-            break
+    padding = 5
+    rev = False
+    size = 5
 
-    im = convert(filename, padding=10)
+    if '-o' in argpos.keys():
+        outputfilename = args[argpos['-o']+1]
+    if '-r' in args:
+        rev = True
+    if '-s' in argpos.keys():
+        size = int(args[argpos['-s']+1])
+
+
+
+    im = convert(filename=inputfilename, padding=padding, size=size, rev=rev)
     if outfilename:
         im.save('{}.png'.format(outfilename))
     else:
