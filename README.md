@@ -4,10 +4,13 @@
 ほとんどデバッグしていないので注意
 
 ## 使い方
-./convert.py inputfile [-o outputfile]
+./convert.py inputfile \[-o outputfile\]
 
-inputfile: 入力ファイル名 (0,1で記述する必要がある。それ以外の文字は無視される)
 
--o outputfile : 出力ファイル名を指定する（省略した場合、変換結果の表示のみ）
--r            : 白黒反転する
--s size       : サイズを指定する(数値)
+| option | description |
+| -- | -- |
+|inputfile     | 入力ファイル名 (0,1で記述する必要がある。それ以外の文字は無視される) |
+|-o outputfile | 出力ファイル名を指定する（省略した場合、変換結果の表示のみ） |
+|-r            | 白黒反転する |
+|-s size       | サイズを指定する(数値) |
+
